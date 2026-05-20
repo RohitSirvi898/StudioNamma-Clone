@@ -63,3 +63,38 @@ section_5.forEach((div,index) => {
         video.currentTime = 0;
     });
 });
+
+let services = document.querySelectorAll('.service-div');
+
+services.forEach((div,index)=>{
+
+    let service_video = div.querySelector('video');
+    let small_service_text = div.querySelector('.service-small-text')
+    let service_text = div.querySelector('.service-text');
+    div.addEventListener('mouseenter',()=>{
+        service_video.style.transition = 'height 0.4s';
+        service_video.style.opacity = '1';
+        service_video.style.height = '262.5px';
+        service_text.style.zIndex = '11';
+        small_service_text.style.opacity = '1';
+        
+        // Set opacity 0.5 for all other service divs
+        services.forEach((otherDiv) => {
+            if(otherDiv !== div) {
+                otherDiv.querySelector('.service-text').style.opacity = '0.5';
+            }
+        });
+    })
+    div.addEventListener('mouseleave',()=>{
+        service_video.style.transition = 'height 0';
+        service_video.style.height = '0px';
+        service_video.style.opacity = '0';
+        service_text.style.zIndex = '9';
+        small_service_text.style.opacity = '0';
+        
+        // Reset opacity to 1 for all service divs
+        services.forEach((otherDiv) => {
+            otherDiv.querySelector('.service-text').style.opacity = '1';
+        });
+    })
+})
