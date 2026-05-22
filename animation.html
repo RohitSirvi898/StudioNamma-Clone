@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body{
+            width: 100vw;
+            height: 100vh;
+            scrollbar-width: none;
+        }
+        .wrapper{
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+            position: relative;
+        }
+        nav{
+            height: 100px;
+            width: 100%;
+            position: fixed;
+        }
+        .upperscreen{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            pointer-events: none;
+            transition: all 0.5s;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+        }
+        .menuscreen{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+        .menuscreen p{
+            font-size: 6rem;
+            color: white;
+        }
+        .main{
+            width: 100%;
+            height: 100%;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav ><button>click me</button></nav>
+        <div class="upperscreen"> 
+            <div class="menuscreen">
+                <p >Hello</p>
+            </div>
+        </div>
+        <div class="main">
+
+        </div>
+    </div>
+    <script>
+        let button = document.querySelector("button");
+        let upperscreen = document.querySelector('.upperscreen');
+        let flag = true;
+        button.addEventListener("click",()=>{
+            if(flag){
+                upperscreen.style.clipPath = 'polygon(0% 0%, 100% 0%, 100% 175%, 0% 100%)';
+                flag = false;
+            }
+            else{
+                upperscreen.style.clipPath = 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)';
+                flag = true;
+            }
+        })
+    </script>
+</body>
+</html>

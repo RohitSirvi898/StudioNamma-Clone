@@ -1,19 +1,17 @@
 let toggle = document.querySelector('.menu');
-let upper_screen = document.querySelector('.upper-screen');
+let upper_screen = document.querySelector('.upperscreen');
 let main = document.querySelector('main');
-
+let flag = true;
 toggle.addEventListener('click', () => {
-    if(upper_screen.style.top == '-200vh') {
-        upper_screen.style.transform = 'rotate(20deg)';
-        upper_screen.style.top='0%';
-        main.style.visibility = 'hidden';
-        toggle.textContent = "CLOSE";
-        
-    } else {
-        upper_screen.style.transform = 'rotate(0deg)';
-        upper_screen.style.top = '-200vh';
-        main.style.visibility = 'visible';
-        toggle.textContent = "OPEN";
+    if(flag){
+        upper_screen.style.clipPath = 'polygon(0% 0%, 100% 0%, 100% 175%, 0% 100%)';
+        upper_screen.style.pointerEvents = 'auto';
+        flag = false;
+    }
+    else{
+        upper_screen.style.clipPath = 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)';
+        upper_screen.style.pointerEvents = 'all';
+        flag = true;
     }
 });
 
